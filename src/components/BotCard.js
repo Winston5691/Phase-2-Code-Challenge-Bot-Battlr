@@ -9,31 +9,23 @@ const botTypeClasses = {
   Captain: "icon star",
 };
 
-function BotCard({ bot,handleClick,handleDelete}) {
-
- function handleDeleteClick(){
-
-  fetch(`http://localhost:8002/bots/${bot.id}`, {
+function BotCard({bot,handleClick,handleDelete}){
+  function handleDeleteClick(){
+    fetch(`http://localhost:8002/bots/${bot.id}`,)
     method: 'DELETE',
     headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
+      'Content-Type':'application/json',
+      'Accept':'application/json'
     }
-  })
-  .then(result => result.json())
-  .then(() =>handleDelete(bot.id))
+  }
 }
-
-  
-   
   return (
-    <div className="ui column" 
-    >
+    <div className="ui column">
       <div
+      onDoubleClick={()=>showBoltSpecs(bot)}
         className="ui card"
         key={bot.id}
-        onClick={() => handleClick(bot.id)
-      }
+        onClick={() => handleClick(bot)}
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
@@ -65,9 +57,8 @@ function BotCard({ bot,handleClick,handleDelete}) {
             <div className="ui center aligned segment basic">
               <button
                 className="ui mini red button"
-                onClick={(e) =>
-                  {e.stopPropagation();
-                    handleDeleteClick(bot.id)}
+                onClick={() =>
+                  handleDelete(bot)
                 }
               >
                 x
