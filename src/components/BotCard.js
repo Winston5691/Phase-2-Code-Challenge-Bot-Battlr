@@ -34,7 +34,7 @@ function BotCard({ bot,handleClick,handleDelete}) {
         key={bot.id}
         onClick={() => handleClick(bot.id)
       }
-      />
+      >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
         </div>
@@ -76,6 +76,7 @@ function BotCard({ bot,handleClick,handleDelete}) {
           </span>
         </div>
       </div>
+    </div>
   );
 }
 
